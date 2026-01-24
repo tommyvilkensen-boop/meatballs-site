@@ -3,14 +3,198 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Meatballs</title>
+  <title>Meatballs — Press</title>
+  <meta name="description" content="Meatballs is an editorial iOS app. Not a recipe app — a reference library from kitchens around the world." />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --fg:#111111;
+      --muted:#4b4b4b;
+      --hair:#d9d9d9;
+      --max: 780px;
+    }
+    html,body{height:100%;}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--fg);
+      font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a{color:inherit; text-decoration: underline; text-decoration-thickness: .08em; text-underline-offset: .18em;}
+    a:hover{opacity:.8;}
+    .wrap{max-width:var(--max); margin:0 auto; padding:56px 22px 72px;}
+    .masthead{margin: 6px 0 34px;}
+    .kicker{
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+    h1,h2{
+      font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      font-weight: 600;
+      margin: 0;
+    }
+    h1{font-size: 52px; line-height: 1.02; margin-bottom: 10px;}
+    .subtitle{
+      font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      font-size: 22px;
+      line-height: 1.25;
+      margin: 0 0 18px;
+    }
+    .lede{
+      color: var(--fg);
+      max-width: 64ch;
+      margin: 14px 0 0;
+    }
+    hr{
+      border: 0;
+      border-top: 1px solid var(--hair);
+      margin: 30px 0 30px;
+    }
+    section{margin: 0 0 28px;}
+    h2{
+      font-size: 20px;
+      line-height: 1.25;
+      margin: 0 0 10px;
+    }
+    p{margin: 0 0 12px; max-width: 70ch;}
+    .facts{
+      border-left: 2px solid var(--hair);
+      padding: 2px 0 2px 16px;
+      margin-top: 10px;
+      color: var(--fg);
+    }
+    .facts ul{list-style: none; padding: 0; margin: 8px 0 0;}
+    .facts li{margin: 6px 0; color: var(--fg);}
+    .facts span{color: var(--muted);}
+    .small{font-size: 14px; color: var(--muted);}
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 14px;
+      margin: 22px 0 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .nav a{color: var(--muted);}
+    .anchor{position: relative; top: -12px;}
+    @media (max-width: 520px){
+      .wrap{padding:44px 18px 64px;}
+      h1{font-size: 40px;}
+      .subtitle{font-size: 20px;}
+    }
+    @media print{
+      .wrap{padding: 24px 18px;}
+      a{text-decoration:none;}
+      .nav{display:none;}
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Meatballs</h1>
-  <p>A reference library from kitchens around the world.</p>
-  <p>
-    <a href="/privacy.html">Privacy Policy</a> ·
-    <a href="/support.html">Support</a>
-  </p>
+  <main class="wrap">
+    <header class="masthead" aria-label="Press header">
+      <p class="kicker">Press / About</p>
+
+      <h1>Meatballs</h1>
+      <p class="subtitle">Not a recipe app.</p>
+
+      <p class="lede">
+        Meatballs is an editorial iOS app exploring one of the world’s most familiar dishes — not as recipes first,
+        but as stories of place, tradition, and care.
+      </p>
+
+      <nav class="nav" aria-label="On-page navigation">
+        <a href="#what">What it is</a>
+        <a href="#facts">App facts</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#support">Support &amp; contact</a>
+      </nav>
+    </header>
+
+    <hr />
+
+    <section aria-labelledby="what-title">
+      <span id="what" class="anchor" aria-hidden="true"></span>
+      <h2 id="what-title">What is Meatballs?</h2>
+
+      <p>
+        Meatballs is a reference library and cultural archive built around a single dish, seen through countless regional
+        interpretations. From home kitchens to street stalls, from everyday meals to festive tables, Meatballs presents food
+        as lived experience rather than instruction alone.
+      </p>
+
+      <p>
+        Each entry combines context, origin, and method — allowing readers to understand <em>why</em> a dish exists before
+        deciding <em>how</em> to cook it. The app is designed to be read like a magazine and explored like an atlas.
+      </p>
+    </section>
+
+    <section aria-labelledby="facts-title" class="facts">
+      <span id="facts" class="anchor" aria-hidden="true"></span>
+      <h2 id="facts-title">App facts</h2>
+      <ul>
+        <li><span>Platform:</span> iOS</li>
+        <li><span>Category:</span> Food &amp; Drink</li>
+        <li><span>Focus:</span> Culinary culture, tradition, and storytelling</li>
+        <li><span>Price:</span> Free</li>
+        <li><span>Offline support:</span> Yes (saved items)</li>
+        <li><span>Tracking:</span> None</li>
+      </ul>
+      <p class="small">Note: This page intentionally contains no downloads or press kits. If you need anything specific, contact us.</p>
+    </section>
+
+    <section aria-labelledby="privacy-title">
+      <span id="privacy" class="anchor" aria-hidden="true"></span>
+      <h2 id="privacy-title">Privacy policy</h2>
+
+      <p>Meatballs respects user privacy by design.</p>
+
+      <p>
+        The app does not require accounts or sign-in. No personal data is collected, and the app does not use analytics,
+        ads, or third-party tracking.
+      </p>
+
+      <p>
+        Saved items are stored locally and may sync via the user’s own iCloud account to keep bookmarks consistent across
+        the user’s devices.
+      </p>
+
+      <p>
+        No data is sold, shared, or processed for advertising purposes.
+      </p>
+
+      <p class="small">
+        If you have questions regarding privacy, contact us below.
+      </p>
+    </section>
+
+    <section aria-labelledby="support-title">
+      <span id="support" class="anchor" aria-hidden="true"></span>
+      <h2 id="support-title">Support &amp; contact</h2>
+
+      <p>
+        For support questions, feedback, or press inquiries:
+        <br />
+        <strong><a href="mailto:hello@meatballs.app">hello@meatballs.app</a></strong>
+      </p>
+    </section>
+
+    <hr />
+
+    <footer class="small" aria-label="Footer">
+      <p>
+        Suggested App Store Connect links:
+        <br />
+        Privacy Policy URL: <span>https://meatballs.app/press#privacy</span>
+        <br />
+        Support URL: <span>https://meatballs.app/press#support</span>
+      </p>
+    </footer>
+  </main>
 </body>
 </html>
