@@ -311,24 +311,34 @@
             .hero {
                 flex-direction: column;
                 text-align: center;
-                padding: 40px 24px 60px;
+                padding: 40px 24px 40px;
             }
 
             .hero-content {
                 max-width: 100%;
-                margin-bottom: 40px;
+                margin-bottom: 32px;
             }
 
             .hero-headline {
-                font-size: 32px;
+                font-size: 28px;
+            }
+
+            .hero-subheadline {
+                font-size: 16px;
             }
 
             .hero-image {
                 justify-content: center;
+                flex: 0 0 auto;
             }
 
             .facts-inner {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+
+            .fact-number {
+                font-size: 32px;
             }
 
             .difference-grid {
@@ -361,6 +371,72 @@
                 grid-template-columns: 1fr !important;
                 max-width: 280px;
                 margin: 0 auto;
+            }
+
+            .angles-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            /* Fix inline padding sections */
+            .copy-paste-section,
+            .story-section,
+            .screenshots-section,
+            .angles-section,
+            .quotes-section {
+                padding-left: 24px !important;
+                padding-right: 24px !important;
+            }
+
+            .story-section {
+                padding-top: 60px !important;
+                padding-bottom: 60px !important;
+            }
+
+            .story-section .section-title {
+                font-size: 24px;
+            }
+
+            .story-section blockquote {
+                font-size: 18px !important;
+            }
+
+            .difference {
+                padding: 60px 24px !important;
+            }
+
+            .screenshots-section {
+                padding-top: 60px !important;
+                padding-bottom: 60px !important;
+            }
+
+            .angles-section {
+                padding-top: 60px !important;
+                padding-bottom: 60px !important;
+            }
+
+            .quotes-section {
+                padding-top: 40px !important;
+                padding-bottom: 60px !important;
+            }
+
+            .quotes-section blockquote {
+                font-size: 16px !important;
+            }
+
+            .contact {
+                padding: 60px 24px !important;
+            }
+
+            .assets {
+                padding: 60px 24px !important;
+            }
+
+            footer {
+                padding: 32px 24px;
             }
         }
     </style>
@@ -395,7 +471,7 @@
     </section>
 
     <!-- Copy-paste summary -->
-    <section style="padding: 20px 48px 0;">
+    <section class="copy-paste-section" style="padding: 20px 48px 0;">
         <div style="max-width: 1200px; margin: 0 auto;">
             <details style="background: #EDE4D8; border-radius: 8px; padding: 20px 24px;">
                 <summary style="cursor: pointer; font-size: 14px; font-weight: 700; opacity: 0.7;">Copy-paste summary for articles</summary>
@@ -407,7 +483,7 @@
     </section>
 
     <!-- The Story -->
-    <section style="background: #1F1F1F; color: #F6EFE6; padding: 100px 48px;">
+    <section class="story-section" style="background: #1F1F1F; color: #F6EFE6; padding: 100px 48px;">
         <div class="story-grid" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
             <div>
                 <p class="section-eyebrow" style="color: #F6EFE6;">The Story</p>
@@ -462,7 +538,7 @@
     </section>
 
     <!-- Screenshots Preview -->
-    <section style="padding: 80px 48px; background: #F6EFE6;">
+    <section class="screenshots-section" style="padding: 80px 48px; background: #F6EFE6;">
         <div style="max-width: 1200px; margin: 0 auto;">
             <p class="section-eyebrow">The App</p>
             <h2 class="section-title">A quick look inside</h2>
@@ -479,11 +555,11 @@
     </section>
 
     <!-- Story Angles -->
-    <section style="padding: 80px 48px; max-width: 1200px; margin: 0 auto;">
+    <section class="angles-section" style="padding: 80px 48px; max-width: 1200px; margin: 0 auto;">
         <p class="section-eyebrow">Story angles</p>
         <h2 class="section-title">Ways to write about this</h2>
 
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 48px;">
+        <div class="angles-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 48px;">
             <div style="background: #EDE4D8; padding: 28px; border-radius: 12px;">
                 <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 12px;">The nostalgia angle</h3>
                 <p style="font-size: 15px; opacity: 0.75; line-height: 1.6;">A Swedish developer builds an app based on memories of his grandmother's kitchen -and discovers the whole world shares the same comfort food.</p>
@@ -504,7 +580,7 @@
     </section>
 
     <!-- Quotes -->
-    <section style="padding: 60px 48px 100px; max-width: 800px; margin: 0 auto;">
+    <section class="quotes-section" style="padding: 60px 48px 100px; max-width: 800px; margin: 0 auto;">
         <p class="section-eyebrow">Ready-to-use quotes</p>
         <h2 class="section-title">From the developer</h2>
 
