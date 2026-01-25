@@ -179,26 +179,7 @@
       color:var(--muted);
     }
 
-    /* Screenshots (editorial, not a gallery) */
-    .fig{
-      margin:22px 0 0;
-    }
-    .fig img{
-      width:100%;
-      height:auto;
-      display:block;
-      border-radius:18px;
-      border:1px solid var(--hair);
-      background:rgba(255,255,255,.18);
-    }
-    .caption{
-      margin-top:10px;
-      color:var(--muted);
-      font: 400 13px/1.6 var(--sans);
-      max-width:72ch;
-    }
-
-    /* Sidebar: facts + resources */
+    /* Sidebar cards */
     .card{
       border:1px solid var(--hair);
       border-radius:14px;
@@ -213,6 +194,8 @@
       text-transform:uppercase;
       color:var(--muted);
     }
+
+    /* Facts */
     dl{margin:0}
     dt{
       margin:12px 0 0;
@@ -226,10 +209,41 @@
       margin:6px 0 0;
       font: 500 15px/1.45 var(--serif);
     }
+
     .small{
       font: 400 13px/1.6 var(--sans);
       color:var(--muted);
     }
+
+    /* Sidebar screenshots (small, editorial) */
+    .shots{
+      display:grid;
+      gap:12px;
+      margin-top:6px;
+    }
+    .shot{
+      display:block;
+      border-radius:12px;
+      border:1px solid var(--hair);
+      overflow:hidden;
+      background:rgba(255,255,255,.18);
+    }
+    .shot img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+    .shot-meta{
+      margin-top:10px;
+      font: 600 12px/1.2 var(--sans);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 14px;
+    }
+    .shot-meta a{color:var(--muted)}
 
     .section{
       padding:34px 0;
@@ -242,17 +256,6 @@
       color:var(--muted);
       margin:0 0 14px;
     }
-    .links{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px 14px;
-      margin-top:10px;
-      font: 600 12px/1.2 var(--sans);
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:var(--muted);
-    }
-    .links a{color:var(--muted)}
 
     footer{
       border-top:1px solid var(--hair);
@@ -299,7 +302,6 @@
 
       <div class="contents" aria-label="Contents">
         <a href="#overview">Overview</a><span class="dot">·</span>
-        <a href="#screens">Screens</a><span class="dot">·</span>
         <a href="#story">The story</a><span class="dot">·</span>
         <a href="#resources">Resources</a><span class="dot">·</span>
         <a href="#privacy">Privacy</a><span class="dot">·</span>
@@ -308,6 +310,7 @@
     </header>
 
     <main class="grid">
+      <!-- LEFT: editorial text -->
       <section class="prose" aria-label="Press overview">
         <span id="overview" aria-hidden="true"></span>
         <h2>Overview</h2>
@@ -327,25 +330,6 @@
           <div class="meta">Pull quote (free to use)</div>
         </div>
 
-        <span id="screens" aria-hidden="true"></span>
-        <h2>Screens</h2>
-
-        <!-- Screenshot 1 -->
-        <figure class="fig">
-          <img src="/assets/screenshot-1.png" alt="Meatballs — screenshot 1" />
-          <figcaption class="caption">
-            A calm browsing experience, designed to feel more like reading than searching.
-          </figcaption>
-        </figure>
-
-        <!-- Screenshot 2 (optional). Delete this block if you only want one. -->
-        <figure class="fig">
-          <img src="/assets/screenshot-2.png" alt="Meatballs — screenshot 2" />
-          <figcaption class="caption">
-            An entry reads as a small piece of place — context first, method second.
-          </figcaption>
-        </figure>
-
         <span id="story" aria-hidden="true"></span>
         <h2>The story</h2>
         <p>
@@ -356,14 +340,18 @@
           Meatballs is an independent project based in Stockholm, built as a long-term reference library rather than a trend-driven feed.
         </p>
 
-        <div class="links" aria-label="Primary links">
-          <!-- Replace # with your actual App Store URL when ready -->
-          <a href="#" target="_blank" rel="noopener">View on the App Store</a>
-          <a href="#resources">Press kit</a>
-          <a href="mailto:press@meatballs.app">Press contact</a>
-        </div>
+        <h2>Links</h2>
+        <p class="small" style="margin-top:-6px">
+          Keep this simple. If you don’t have the App Store URL yet, leave it out until launch.
+        </p>
+        <p>
+          <a href="#" target="_blank" rel="noopener">View on the App Store</a><br/>
+          <a href="#resources">Press kit & assets</a><br/>
+          <a href="mailto:press@meatballs.app">press@meatballs.app</a>
+        </p>
       </section>
 
+      <!-- RIGHT: facts + small screenshots -->
       <aside aria-label="Facts and resources">
         <div class="card">
           <h3>By the numbers</h3>
@@ -375,7 +363,31 @@
             <dt>Price</dt><dd>Free</dd>
           </dl>
           <p class="small" style="margin:12px 0 0">
-            Update these numbers whenever you add content. Journalists cite this.
+            Update these whenever you add content — journalists cite this.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Screenshots</h3>
+          <div class="shots">
+            <!-- Click-to-expand thumbnails (small, in the sidebar) -->
+            <a class="shot" href="/assets/screenshot-1.png" target="_blank" rel="noopener">
+              <img src="/assets/screenshot-1.png" alt="Meatballs screenshot 1" />
+            </a>
+
+            <!-- Optional second screenshot: remove this <a> if you only want one -->
+            <a class="shot" href="/assets/screenshot-2.png" target="_blank" rel="noopener">
+              <img src="/assets/screenshot-2.png" alt="Meatballs screenshot 2" />
+            </a>
+          </div>
+
+          <div class="shot-meta">
+            <a href="/assets/screenshot-1.png" target="_blank" rel="noopener">Open</a>
+            <a href="/assets/meatballs-press-kit.zip">Press kit</a>
+          </div>
+
+          <p class="small" style="margin:10px 0 0">
+            Thumbnails are intentionally small. Click to view full size.
           </p>
         </div>
 
@@ -395,12 +407,15 @@
               <a href="mailto:support@meatballs.app">support@meatballs.app</a>
             </dd>
           </dl>
+          <p class="small" style="margin:12px 0 0">
+            Keep assets in <code>/assets</code> so URLs stay stable for editors.
+          </p>
         </div>
 
         <div class="card">
           <h3>Notes</h3>
           <p class="small" style="margin:0">
-            This page is intentionally restrained: it aims to be useful, skimmable, and quotable.
+            This page is intentionally restrained: useful, skimmable, quotable.
           </p>
         </div>
       </aside>
