@@ -140,6 +140,23 @@
             50% { transform: rotate(45deg) translateY(8px); }
         }
 
+        /* Screenshot carousel - 3 images, 4s each */
+        @keyframes fade1 {
+            0%, 25% { opacity: 1; }
+            33%, 92% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes fade2 {
+            0%, 25% { opacity: 0; }
+            33%, 58% { opacity: 1; }
+            66%, 100% { opacity: 0; }
+        }
+        @keyframes fade3 {
+            0%, 58% { opacity: 0; }
+            66%, 92% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
         /* Story Section */
         .story {
             background: #1F1F1F;
@@ -376,7 +393,11 @@
             <p style="margin-top: 16px; font-size: 13px; opacity: 0.5;">29 kr. Yours forever.</p>
         </div>
         <div class="hero-image">
-            <img src="/assets/Screen2.png" alt="Meatballs app" style="max-width: 320px; width: 100%; border-radius: 32px; border: 1px solid rgba(31, 31, 31, 0.12);">
+            <div class="screenshot-carousel" style="position: relative; max-width: 320px; width: 100%;">
+                <img src="/assets/Screen1.png" alt="Meatballs app" class="carousel-img" style="width: 100%; border-radius: 32px; border: 1px solid rgba(31, 31, 31, 0.12); animation: fade1 12s infinite;">
+                <img src="/assets/Screen2.png" alt="Meatballs app" class="carousel-img" style="position: absolute; top: 0; left: 0; width: 100%; border-radius: 32px; border: 1px solid rgba(31, 31, 31, 0.12); animation: fade2 12s infinite;">
+                <img src="/assets/Screen3.png" alt="Meatballs app" class="carousel-img" style="position: absolute; top: 0; left: 0; width: 100%; border-radius: 32px; border: 1px solid rgba(31, 31, 31, 0.12); animation: fade3 12s infinite;">
+            </div>
         </div>
     </section>
 
