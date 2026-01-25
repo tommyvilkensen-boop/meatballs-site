@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Meatballs — Press</title>
+  <meta name="description" content="Meatballs is not a recipe app. It is a calm, editorial reference library from kitchens around the world." />
+
+  <style>
+    :root{
+      --bg:#f6f1e8;
+      --ink:#151515;
+      --muted:#5b5b5b;
+      --hair:#d8d0c2;
+      --max:1180px;
+      --col:66ch;
+      --side:30ch;
+
+      --serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    a{color:inherit; text-decoration-thickness:1px; text-underline-offset:3px}
+    a:hover{opacity:.85}
+
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:clamp(22px,4vw,56px) clamp(18px,3vw,44px) 72px;
+    }
+
+    /* Masthead */
+    .masthead{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      gap:12px 18px;
+      padding:6px 0 18px;
+      color:var(--muted);
+      font: 600 12px/1.2 var(--sans);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    header{
+      border-top:1px solid var(--hair);
+      border-bottom:1px solid var(--hair);
+      padding:22px 0 22px;
+    }
+
+    .title-row{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    h1{
+      font: 600 clamp(44px,6vw,76px)/0.95 var(--serif);
+      margin:0;
+      letter-spacing:-0.02em;
+    }
+
+    .icon{
+      width:72px;
+      height:72px;
+      border-radius:16px;
+      border:1px solid var(--hair);
+      overflow:hidden;
+      background:rgba(255,255,255,.22);
+      flex:0 0 auto;
+    }
+    .icon img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .deck{
+      margin-top:16px;
+      max-width:var(--col);
+      font: 400 clamp(18px,2.1vw,22px)/1.55 var(--serif);
+      color:var(--muted);
+    }
+
+    .manifest{
+      margin-top:18px;
+      max-width:var(--col);
+      font: 500 clamp(20px,2.3vw,26px)/1.45 var(--serif);
+      color:var(--ink);
+    }
+    .manifest em{font-style:italic; font-weight:500}
+
+    /* Contents line */
+    .contents{
+      margin-top:18px;
+      padding-top:14px;
+      border-top:1px solid var(--hair);
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 18px;
+      font: 600 12px/1.2 var(--sans);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+    .contents a{color:var(--muted)}
+    .dot{opacity:.55}
+
+    /* Grid */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:34px;
+      padding:34px 0;
+    }
+    @media (min-width: 980px){
+      .grid{
+        grid-template-columns: minmax(0,var(--col)) minmax(0,var(--side));
+        gap:54px;
+        align-items:start;
+      }
+      aside{
+        position:relative;
+      }
+      aside:before{
+        content:"";
+        position:absolute;
+        left:-27px;
+        top:0;
+        bottom:0;
+        width:1px;
+        background:var(--hair);
+      }
+    }
+
+    .prose{
+      font: 400 18px/1.7 var(--serif);
+    }
+    .prose h2{
+      font: 600 16px/1.2 var(--sans);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin:26px 0 14px;
+    }
+    .prose h2:first-child{margin-top:0}
+    .prose p{margin:0 0 18px; max-width:72ch}
+    .prose p:last-child{margin-bottom:0}
+
+    /* Pullquote */
+    .pull{
+      margin:24px 0;
+      padding:18px 0;
+      border-top:1px solid var(--hair);
+      border-bottom:1px solid var(--hair);
+    }
+    .pull blockquote{
+      margin:0;
+      font: 500 clamp(18px,2.0vw,22px)/1.6 var(--serif);
+    }
+    .pull blockquote:before{content:"“"}
+    .pull blockquote:after{content:"”"}
+    .pull .meta{
+      margin-top:10px;
+      font: 600 12px/1.2 var(--sans);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    /* Screenshots (editorial, not a gallery) */
+    .fig{
+      margin:22px 0 0;
+    }
+    .fig img{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:18px;
+      border:1px solid var(--hair);
+      background:rgba(255,255,255,.18);
+    }
+    .caption{
+      margin-top:10px;
+      color:var(--muted);
+      font: 400 13px/1.6 var(--sans);
+      max-width:72ch;
+    }
+
+    /* Sidebar: facts + resources */
+    .card{
+      border:1px solid var(--hair);
+      border-radius:14px;
+      background:rgba(255,255,255,.16);
+      padding:14px;
+      margin-bottom:14px;
+    }
+    .card h3{
+      margin:0 0 10px;
+      font: 700 12px/1.2 var(--sans);
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+    dl{margin:0}
+    dt{
+      margin:12px 0 0;
+      font: 700 11px/1.2 var(--sans);
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+    dt:first-child{margin-top:0}
+    dd{
+      margin:6px 0 0;
+      font: 500 15px/1.45 var(--serif);
+    }
+    .small{
+      font: 400 13px/1.6 var(--sans);
+      color:var(--muted);
+    }
+
+    .section{
+      padding:34px 0;
+      border-top:1px solid var(--hair);
+    }
+    .section h2{
+      font: 600 16px/1.2 var(--sans);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin:0 0 14px;
+    }
+    .links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 14px;
+      margin-top:10px;
+      font: 600 12px/1.2 var(--sans);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+    .links a{color:var(--muted)}
+
+    footer{
+      border-top:1px solid var(--hair);
+      margin-top:34px;
+      padding-top:22px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      gap:10px 14px;
+      color:var(--muted);
+      font: 400 12px/1.6 var(--sans);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="masthead">
+      <div>Meatballs — Press</div>
+      <div id="updated">Updated —</div>
+    </div>
+
+    <header>
+      <div class="title-row">
+        <div>
+          <h1>Meatballs</h1>
+        </div>
+
+        <!-- App icon -->
+        <div class="icon" aria-label="App icon">
+          <img src="/assets/app-icon.png" alt="Meatballs app icon" />
+        </div>
+      </div>
+
+      <div class="deck">
+        This is not a recipe app.<br/>
+        It is a calm reference library from kitchens around the world.
+      </div>
+
+      <div class="manifest">
+        An editorial iOS app about one of the world’s most familiar dishes —
+        <em>as culture, not content.</em>
+      </div>
+
+      <div class="contents" aria-label="Contents">
+        <a href="#overview">Overview</a><span class="dot">·</span>
+        <a href="#screens">Screens</a><span class="dot">·</span>
+        <a href="#story">The story</a><span class="dot">·</span>
+        <a href="#resources">Resources</a><span class="dot">·</span>
+        <a href="#privacy">Privacy</a><span class="dot">·</span>
+        <a href="#support">Support</a>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="prose" aria-label="Press overview">
+        <span id="overview" aria-hidden="true"></span>
+        <h2>Overview</h2>
+        <p>
+          Meatballs is built like a small magazine: each entry is a point of view — a dish tied to place,
+          tradition, and care. It is meant to read well and age well.
+        </p>
+        <p>
+          The app is editorial-first. Cook mode exists, but the lens is cultural context: why a dish exists,
+          where it belongs, and what it means before method.
+        </p>
+
+        <div class="pull" aria-label="Pullquote">
+          <blockquote>
+            Food apps have become content factories. We wanted the opposite — a book that happens to be an app.
+          </blockquote>
+          <div class="meta">Pull quote (free to use)</div>
+        </div>
+
+        <span id="screens" aria-hidden="true"></span>
+        <h2>Screens</h2>
+
+        <!-- Screenshot 1 -->
+        <figure class="fig">
+          <img src="/assets/screenshot-1.png" alt="Meatballs — screenshot 1" />
+          <figcaption class="caption">
+            A calm browsing experience, designed to feel more like reading than searching.
+          </figcaption>
+        </figure>
+
+        <!-- Screenshot 2 (optional). Delete this block if you only want one. -->
+        <figure class="fig">
+          <img src="/assets/screenshot-2.png" alt="Meatballs — screenshot 2" />
+          <figcaption class="caption">
+            An entry reads as a small piece of place — context first, method second.
+          </figcaption>
+        </figure>
+
+        <span id="story" aria-hidden="true"></span>
+        <h2>The story</h2>
+        <p>
+          Why meatballs? Because they are universal and specific at the same time — a shared shape with local rules.
+          A dish that travels, adapts, and still remains recognisable. That tension makes it a perfect editorial subject.
+        </p>
+        <p>
+          Meatballs is an independent project based in Stockholm, built as a long-term reference library rather than a trend-driven feed.
+        </p>
+
+        <div class="links" aria-label="Primary links">
+          <!-- Replace # with your actual App Store URL when ready -->
+          <a href="#" target="_blank" rel="noopener">View on the App Store</a>
+          <a href="#resources">Press kit</a>
+          <a href="mailto:press@meatballs.app">Press contact</a>
+        </div>
+      </section>
+
+      <aside aria-label="Facts and resources">
+        <div class="card">
+          <h3>By the numbers</h3>
+          <dl>
+            <dt>Entries</dt><dd>47</dd>
+            <dt>Countries</dt><dd>32</dd>
+            <dt>Accounts</dt><dd>None</dd>
+            <dt>Tracking</dt><dd>None</dd>
+            <dt>Price</dt><dd>Free</dd>
+          </dl>
+          <p class="small" style="margin:12px 0 0">
+            Update these numbers whenever you add content. Journalists cite this.
+          </p>
+        </div>
+
+        <span id="resources" aria-hidden="true"></span>
+        <div class="card">
+          <h3>Resources</h3>
+          <dl>
+            <dt>Press kit (ZIP)</dt>
+            <dd><a href="/assets/meatballs-press-kit.zip">Download</a></dd>
+
+            <dt>App icon</dt>
+            <dd><a href="/assets/app-icon.png">PNG</a></dd>
+
+            <dt>Contact</dt>
+            <dd>
+              <a href="mailto:press@meatballs.app">press@meatballs.app</a><br/>
+              <a href="mailto:support@meatballs.app">support@meatballs.app</a>
+            </dd>
+          </dl>
+        </div>
+
+        <div class="card">
+          <h3>Notes</h3>
+          <p class="small" style="margin:0">
+            This page is intentionally restrained: it aims to be useful, skimmable, and quotable.
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <section class="section" id="privacy" aria-label="Privacy policy">
+      <h2>Privacy</h2>
+      <div class="prose">
+        <p>
+          Meatballs respects user privacy by design. The app does not require accounts or sign-in.
+          No personal data is collected for advertising or behavioural profiling.
+        </p>
+        <p>
+          Saved items (such as bookmarks) may be stored on your device and may sync via iCloud to keep your saved items
+          consistent across your own devices. Network requests, when needed, use HTTPS.
+        </p>
+        <p class="small">
+          Questions regarding privacy: <a href="mailto:privacy@meatballs.app">privacy@meatballs.app</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="support" aria-label="Support">
+      <h2>Support</h2>
+      <div class="prose">
+        <p>
+          For help, corrections, or questions: <a href="mailto:support@meatballs.app">support@meatballs.app</a>.
+          If reporting a bug, include device model and iOS version.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> Meatballs.</div>
+      <div>
+        <a href="/">Home</a> ·
+        <a href="#privacy">Privacy</a> ·
+        <a href="#support">Support</a>
+      </div>
+      <script>
+        const d = new Date();
+        document.getElementById('y').textContent = d.getFullYear();
+        document.getElementById('updated').textContent =
+          'Updated — ' + d.toLocaleDateString(undefined, { year:'numeric', month:'short', day:'2-digit' });
+      </script>
+    </footer>
+  </div>
+</body>
+</html>
