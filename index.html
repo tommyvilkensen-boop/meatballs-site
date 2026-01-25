@@ -41,18 +41,50 @@
       padding:clamp(24px,4vw,56px) clamp(18px,3vw,44px);
     }
 
-    header{
-      padding-top:10px;
-      padding-bottom:34px;
-      border-bottom:1px solid var(--hair);
+    /* Masthead */
+    .masthead{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+      padding:6px 0 18px 0;
     }
-
-    .kicker{
+    @media (min-width: 980px){
+      .masthead{
+        grid-template-columns: 1fr 1fr;
+        align-items:end;
+      }
+    }
+    .masthead .left{
       font: 600 12px/1.2 var(--sans);
       letter-spacing:.14em;
       text-transform:uppercase;
       color:var(--muted);
-      margin:0 0 14px 0;
+    }
+    .masthead .right{
+      font: 500 12px/1.2 var(--sans);
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color:var(--muted);
+      display:flex;
+      gap:14px;
+      justify-content:flex-start;
+      flex-wrap:wrap;
+    }
+    @media (min-width: 980px){
+      .masthead .right{justify-content:flex-end}
+    }
+    .chip{
+      padding:6px 10px;
+      border:1px solid var(--hair);
+      border-radius:999px;
+      background:rgba(255,255,255,.16);
+    }
+
+    header{
+      padding-top:10px;
+      padding-bottom:22px;
+      border-top:1px solid var(--hair);
+      border-bottom:1px solid var(--hair);
     }
 
     h1{
@@ -69,7 +101,7 @@
     }
 
     .manifest{
-      margin-top:22px;
+      margin-top:18px;
       max-width:var(--col);
       font: 500 clamp(20px,2.3vw,26px)/1.45 var(--serif);
       color:var(--ink);
@@ -79,13 +111,48 @@
       font-weight:500;
     }
 
+    /* Contents line (editorial, not nav-bar) */
+    .contents{
+      margin-top:18px;
+      padding-top:14px;
+      border-top:1px solid var(--hair);
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 18px;
+      font: 600 12px/1.2 var(--sans);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+    .contents a{color:var(--muted)}
+    .contents .dot{opacity:.55}
+
+    /* Press quote band */
+    .quote-band{
+      padding:22px 0;
+      border-bottom:1px solid var(--hair);
+    }
+    .quote{
+      max-width:calc(var(--col) + 8ch);
+      font: 500 clamp(18px,2.0vw,22px)/1.6 var(--serif);
+      margin:0;
+    }
+    .quote:before{content:"“"}
+    .quote:after{content:"”"}
+    .quote-meta{
+      margin-top:10px;
+      font: 600 12px/1.2 var(--sans);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
     .grid{
       display:grid;
       grid-template-columns: 1fr;
       gap:34px;
       padding:34px 0;
     }
-
     @media (min-width: 980px){
       .grid{
         grid-template-columns: minmax(0,var(--col)) minmax(0,var(--side));
@@ -151,6 +218,7 @@
       color:var(--muted);
     }
 
+    /* Cards (facts) */
     .facts{
       margin:0;
       padding:0;
@@ -158,14 +226,12 @@
       display:grid;
       gap:14px;
     }
-
     .facts li{
       padding:12px 14px;
       border:1px solid var(--hair);
       border-radius:12px;
       background:rgba(255,255,255,.18);
     }
-
     .facts b{
       display:block;
       font: 700 12px/1.2 var(--sans);
@@ -177,6 +243,37 @@
     .facts span{
       display:block;
       font: 500 15px/1.45 var(--serif);
+      color:var(--ink);
+    }
+
+    /* Specs box (margin note) */
+    .specs{
+      margin-top:18px;
+      padding:14px;
+      border:1px solid var(--hair);
+      border-radius:12px;
+      background:rgba(255,255,255,.12);
+    }
+    .specs h4{
+      margin:0 0 10px 0;
+      font: 700 12px/1.2 var(--sans);
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+    .specs dl{margin:0; padding:0}
+    .specs dt{
+      margin:0;
+      font: 700 11px/1.2 var(--sans);
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-top:10px;
+    }
+    .specs dt:first-child{margin-top:0}
+    .specs dd{
+      margin:6px 0 0 0;
+      font: 400 14px/1.55 var(--sans);
       color:var(--ink);
     }
 
@@ -206,9 +303,12 @@
       flex-wrap:wrap;
       gap:10px 14px;
       margin-top:12px;
-      font: 500 14px/1.4 var(--sans);
+      font: 600 12px/1.2 var(--sans);
+      letter-spacing:.14em;
+      text-transform:uppercase;
       color:var(--muted);
     }
+    .links a{color:var(--muted)}
 
     footer{
       padding:34px 0 8px 0;
@@ -216,14 +316,26 @@
       color:var(--muted);
       font: 400 12px/1.6 var(--sans);
       letter-spacing:.01em;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 14px;
+      justify-content:space-between;
     }
   </style>
 </head>
 
 <body>
   <div class="wrap">
+    <div class="masthead" aria-label="Masthead">
+      <div class="left">Press / Support / Privacy</div>
+      <div class="right">
+        <span class="chip">meatballs.app</span>
+        <span class="chip" id="mh-date">Updated —</span>
+        <span class="chip">Stockholm</span>
+      </div>
+    </div>
+
     <header>
-      <p class="kicker">Press / Support / Privacy</p>
       <h1>Meatballs</h1>
 
       <div class="deck">
@@ -235,10 +347,25 @@
         An editorial iOS app about one of the world’s most familiar dishes —
         <em>as culture, not content.</em>
       </div>
+
+      <div class="contents" aria-label="Contents">
+        <a href="#what">What it is</a><span class="dot">·</span>
+        <a href="#for-journalists">For journalists</a><span class="dot">·</span>
+        <a href="#support">Support</a><span class="dot">·</span>
+        <a href="#privacy">Privacy</a>
+      </div>
     </header>
+
+    <section class="quote-band" aria-label="Press quote">
+      <p class="quote">
+        A calm reference library where every dish reads like a small piece of place.
+      </p>
+      <div class="quote-meta">For quotes, screenshots, or context — <a href="mailto:press@meatballs.app">press@meatballs.app</a></div>
+    </section>
 
     <main class="grid" aria-label="Main content">
       <section class="prose" aria-label="Editorial description">
+        <span id="what" aria-hidden="true"></span>
         <h2>What it is</h2>
         <p>
           Meatballs is built like a small magazine: each entry is a point of view — a dish tied to place,
@@ -253,6 +380,7 @@
           <small>Cook mode exists, but the editorial lens comes first.</small>
         </div>
 
+        <span id="for-journalists" aria-hidden="true"></span>
         <h2>For journalists</h2>
         <p>
           If you are writing about food culture, slow digital experiences, editorial product design, or
@@ -289,13 +417,25 @@
           </li>
         </ul>
 
+        <div class="specs" aria-label="Specs">
+          <h4>Specs</h4>
+          <dl>
+            <dt>Accounts</dt><dd>None</dd>
+            <dt>Tracking</dt><dd>None</dd>
+            <dt>Offline</dt><dd>Saved items</dd>
+            <dt>Sync</dt><dd>iCloud (bookmarks)</dd>
+            <dt>Security</dt><dd>HTTPS</dd>
+          </dl>
+        </div>
+
         <p class="note" style="margin-top:16px">
-          Tip: If you only have one address, you can route both to the same inbox and keep the labels for clarity.
+          Tip: If you only have one address, you can route both <span style="white-space:nowrap;">press@</span> and
+          <span style="white-space:nowrap;">support@</span> to the same inbox and keep the labels for clarity.
         </p>
       </aside>
     </main>
 
-    <section class="section" aria-label="Support">
+    <section class="section" id="support" aria-label="Support">
       <h3>Support</h3>
       <div class="simple">
         <p>
@@ -303,8 +443,8 @@
           Include your device model and iOS version if you are reporting a bug.
         </p>
         <div class="links">
-          <span><a href="https://meatballs.app">Home</a></span>
-          <span><a href="#privacy">Privacy</a></span>
+          <a href="#privacy">Privacy</a>
+          <a href="https://meatballs.app">Home</a>
         </div>
       </div>
     </section>
@@ -320,33 +460,28 @@
           depending on how you use the app. Network requests, when needed, use HTTPS.
         </p>
         <p>
-          If you need a formal privacy policy text for App Store submission, place it here as the canonical version.
-          Keep it short, specific, and aligned with what the app actually does.
+          The app does not use advertising, third-party tracking, or analytics for behavioral profiling.
         </p>
         <div class="links">
-          <span><a href="mailto:privacy@meatballs.app">privacy@meatballs.app</a></span>
+          <a href="mailto:privacy@meatballs.app">privacy@meatballs.app</a>
+          <a href="#support">Support</a>
         </div>
       </div>
     </section>
 
-    <section class="section" aria-label="Press notes">
-      <h3>Press notes</h3>
-      <div class="simple">
-        <p>
-          Meatballs is intentionally quiet: no feeds, no performative “engagement,” no trend layer.
-          It is meant to read well and age well.
-        </p>
-        <p>
-          If you need screenshots for a specific device size or a short press kit, email
-          <a href="mailto:press@meatballs.app">press@meatballs.app</a>.
-        </p>
-      </div>
-    </section>
-
     <footer>
-      © <span id="y"></span> Meatballs. All rights reserved.
+      <div>© <span id="y"></span> Meatballs.</div>
+      <div>
+        <a href="#what">Contents</a> ·
+        <a href="#support">Support</a> ·
+        <a href="#privacy">Privacy</a>
+      </div>
+
       <script>
-        document.getElementById('y').textContent = new Date().getFullYear();
+        const d = new Date();
+        document.getElementById('y').textContent = d.getFullYear();
+        const fmt = d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: '2-digit' });
+        document.getElementById('mh-date').textContent = 'Updated — ' + fmt;
       </script>
     </footer>
   </div>
