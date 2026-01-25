@@ -1,489 +1,497 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Meatballs — Press, Support & Privacy</title>
-  <meta name="description" content="Meatballs is not a recipe app. It is a reference library from kitchens around the world." />
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meatballs – 47 countries, 47 recipes, one universal dish</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <style>
-    :root{
-      --bg:#f6f1e8;
-      --ink:#151515;
-      --muted:#5b5b5b;
-      --hair:#d8d0c2;
-      --accent:#1f3b33;
-      --max:1120px;
-      --col:64ch;
-      --side:28ch;
+        body {
+            font-family: 'Libre Caslon Text', Georgia, serif;
+            background-color: #F6EFE6;
+            color: #1F1F1F;
+            line-height: 1.6;
+        }
 
-      --serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-      --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
-    }
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 48px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--ink);
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
-    }
+        .logo {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
 
-    a{color:inherit; text-decoration-thickness:1px; text-underline-offset:3px}
-    a:hover{color:var(--accent)}
-    ::selection{background:rgba(31,59,51,.16)}
+        nav a {
+            margin-left: 32px;
+            text-decoration: none;
+            color: #1F1F1F;
+            opacity: 0.6;
+            font-size: 14px;
+            transition: opacity 0.2s;
+        }
 
-    .wrap{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:clamp(24px,4vw,56px) clamp(18px,3vw,44px);
-    }
+        nav a:hover {
+            opacity: 1;
+        }
 
-    /* Masthead */
-    .masthead{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:10px;
-      padding:6px 0 18px 0;
-    }
-    @media (min-width: 980px){
-      .masthead{
-        grid-template-columns: 1fr 1fr;
-        align-items:end;
-      }
-    }
-    .masthead .left{
-      font: 600 12px/1.2 var(--sans);
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:var(--muted);
-    }
-    .masthead .right{
-      font: 500 12px/1.2 var(--sans);
-      letter-spacing:.06em;
-      text-transform:uppercase;
-      color:var(--muted);
-      display:flex;
-      gap:14px;
-      justify-content:flex-start;
-      flex-wrap:wrap;
-    }
-    @media (min-width: 980px){
-      .masthead .right{justify-content:flex-end}
-    }
-    .chip{
-      padding:6px 10px;
-      border:1px solid var(--hair);
-      border-radius:999px;
-      background:rgba(255,255,255,.16);
-    }
+        /* Hero */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 48px 120px;
+            min-height: 80vh;
+        }
 
-    header{
-      padding-top:10px;
-      padding-bottom:22px;
-      border-top:1px solid var(--hair);
-      border-bottom:1px solid var(--hair);
-    }
+        .hero-content {
+            flex: 1;
+            max-width: 500px;
+        }
 
-    h1{
-      font: 600 clamp(44px,6vw,76px)/0.95 var(--serif);
-      margin:0;
-      letter-spacing:-0.02em;
-    }
+        .hero-eyebrow {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.5;
+            margin-bottom: 24px;
+        }
 
-    .deck{
-      margin-top:18px;
-      max-width:var(--col);
-      font: 400 clamp(18px,2.1vw,22px)/1.55 var(--serif);
-      color:var(--muted);
-    }
+        .hero-headline {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 24px;
+        }
 
-    .manifest{
-      margin-top:18px;
-      max-width:var(--col);
-      font: 500 clamp(20px,2.3vw,26px)/1.45 var(--serif);
-      color:var(--ink);
-    }
-    .manifest em{
-      font-style:italic;
-      font-weight:500;
-    }
+        .hero-subheadline {
+            font-size: 20px;
+            opacity: 0.7;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
 
-    /* Contents line (editorial, not nav-bar) */
-    .contents{
-      margin-top:18px;
-      padding-top:14px;
-      border-top:1px solid var(--hair);
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px 18px;
-      font: 600 12px/1.2 var(--sans);
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:var(--muted);
-    }
-    .contents a{color:var(--muted)}
-    .contents .dot{opacity:.55}
+        .app-store-btn {
+            display: inline-block;
+        }
 
-    /* Press quote band */
-    .quote-band{
-      padding:22px 0;
-      border-bottom:1px solid var(--hair);
-    }
-    .quote{
-      max-width:calc(var(--col) + 8ch);
-      font: 500 clamp(18px,2.0vw,22px)/1.6 var(--serif);
-      margin:0;
-    }
-    .quote:before{content:"“"}
-    .quote:after{content:"”"}
-    .quote-meta{
-      margin-top:10px;
-      font: 600 12px/1.2 var(--sans);
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:var(--muted);
-    }
+        .app-store-btn img {
+            height: 52px;
+        }
 
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:34px;
-      padding:34px 0;
-    }
-    @media (min-width: 980px){
-      .grid{
-        grid-template-columns: minmax(0,var(--col)) minmax(0,var(--side));
-        gap:54px;
-        align-items:start;
-      }
-    }
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
 
-    .prose{
-      font: 400 18px/1.7 var(--serif);
-      color:var(--ink);
-    }
-    .prose p{margin:0 0 18px 0}
-    .prose p:last-child{margin-bottom:0}
-    .prose h2{
-      font: 600 16px/1.2 var(--sans);
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      color:var(--muted);
-      margin:26px 0 14px 0;
-    }
-    .prose h2:first-child{margin-top:0}
+        .phone-mockup {
+            max-width: 380px;
+            width: 100%;
+            /* Placeholder - replace with actual image */
+            background: linear-gradient(135deg, #E8DFD4 0%, #D4C9BC 100%);
+            border-radius: 40px;
+            aspect-ratio: 9/18;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1F1F1F;
+            opacity: 0.4;
+            font-size: 14px;
+        }
 
-    .prose .standalone{
-      margin:22px 0 22px 0;
-      padding-left:14px;
-      border-left:2px solid var(--hair);
-      color:var(--ink);
-      font: 500 20px/1.55 var(--serif);
-    }
-    .prose .standalone span{display:block}
-    .prose .standalone small{
-      display:block;
-      margin-top:10px;
-      font: 400 14px/1.5 var(--sans);
-      color:var(--muted);
-      letter-spacing:.01em;
-    }
+        /* Scroll indicator */
+        .scroll-indicator {
+            text-align: center;
+            padding-bottom: 60px;
+        }
 
-    aside{
-      border-top:1px solid var(--hair);
-      padding-top:18px;
-      position:relative;
-    }
-    @media (min-width: 980px){
-      aside{
-        border-top:none;
-        padding-top:0;
-      }
-      aside:before{
-        content:"";
-        position:absolute;
-        left:-27px;
-        top:0;
-        bottom:0;
-        width:1px;
-        background:var(--hair);
-      }
-    }
+        .scroll-indicator span {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border-right: 2px solid #1F1F1F;
+            border-bottom: 2px solid #1F1F1F;
+            transform: rotate(45deg);
+            opacity: 0.3;
+            animation: bounce 2s infinite;
+        }
 
-    .note{
-      font: 400 14px/1.6 var(--sans);
-      color:var(--muted);
-    }
+        @keyframes bounce {
+            0%, 100% { transform: rotate(45deg) translateY(0); }
+            50% { transform: rotate(45deg) translateY(8px); }
+        }
 
-    /* Cards (facts) */
-    .facts{
-      margin:0;
-      padding:0;
-      list-style:none;
-      display:grid;
-      gap:14px;
-    }
-    .facts li{
-      padding:12px 14px;
-      border:1px solid var(--hair);
-      border-radius:12px;
-      background:rgba(255,255,255,.18);
-    }
-    .facts b{
-      display:block;
-      font: 700 12px/1.2 var(--sans);
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:var(--muted);
-      margin-bottom:6px;
-    }
-    .facts span{
-      display:block;
-      font: 500 15px/1.45 var(--serif);
-      color:var(--ink);
-    }
+        /* Story Section */
+        .story {
+            background: #1F1F1F;
+            color: #F6EFE6;
+            padding: 120px 48px;
+        }
 
-    /* Specs box (margin note) */
-    .specs{
-      margin-top:18px;
-      padding:14px;
-      border:1px solid var(--hair);
-      border-radius:12px;
-      background:rgba(255,255,255,.12);
-    }
-    .specs h4{
-      margin:0 0 10px 0;
-      font: 700 12px/1.2 var(--sans);
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:var(--muted);
-    }
-    .specs dl{margin:0; padding:0}
-    .specs dt{
-      margin:0;
-      font: 700 11px/1.2 var(--sans);
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      color:var(--muted);
-      margin-top:10px;
-    }
-    .specs dt:first-child{margin-top:0}
-    .specs dd{
-      margin:6px 0 0 0;
-      font: 400 14px/1.55 var(--sans);
-      color:var(--ink);
-    }
+        .story-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
 
-    .section{
-      padding:34px 0;
-      border-top:1px solid var(--hair);
-    }
+        .story-eyebrow {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.5;
+            margin-bottom: 32px;
+        }
 
-    .section h3{
-      font: 600 16px/1.2 var(--sans);
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      color:var(--muted);
-      margin:0 0 14px 0;
-    }
+        .story-quote {
+            font-size: 32px;
+            font-style: italic;
+            line-height: 1.5;
+            margin-bottom: 32px;
+        }
 
-    .simple{
-      max-width:var(--col);
-      font: 400 17px/1.75 var(--serif);
-      color:var(--ink);
-    }
-    .simple p{margin:0 0 14px 0}
-    .simple p:last-child{margin-bottom:0}
+        .story-text {
+            font-size: 18px;
+            opacity: 0.8;
+            line-height: 1.8;
+        }
 
-    .links{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px 14px;
-      margin-top:12px;
-      font: 600 12px/1.2 var(--sans);
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:var(--muted);
-    }
-    .links a{color:var(--muted)}
+        /* Features */
+        .features {
+            padding: 120px 48px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    footer{
-      padding:34px 0 8px 0;
-      border-top:1px solid var(--hair);
-      color:var(--muted);
-      font: 400 12px/1.6 var(--sans);
-      letter-spacing:.01em;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px 14px;
-      justify-content:space-between;
-    }
-  </style>
+        .features-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .features-eyebrow {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.5;
+            margin-bottom: 16px;
+        }
+
+        .features-title {
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 32px;
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .feature-text {
+            font-size: 15px;
+            opacity: 0.7;
+            line-height: 1.7;
+        }
+
+        /* Countries Preview */
+        .countries {
+            padding: 80px 48px 120px;
+            background: #EDE4D8;
+        }
+
+        .countries-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .countries-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .countries-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .countries-subtitle {
+            font-size: 18px;
+            opacity: 0.6;
+            font-style: italic;
+        }
+
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .country-card {
+            background: #F6EFE6;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .country-flag {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .country-name {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .country-dish {
+            font-size: 13px;
+            opacity: 0.6;
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 48px;
+            text-align: center;
+            border-top: 1px solid rgba(31, 31, 31, 0.1);
+        }
+
+        .footer-cta {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
+            margin-top: 40px;
+        }
+
+        .footer-links a {
+            color: #1F1F1F;
+            opacity: 0.5;
+            text-decoration: none;
+            margin: 0 16px;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 60px 24px 80px;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                margin-bottom: 60px;
+            }
+
+            .hero-headline {
+                font-size: 36px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .countries-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            header {
+                padding: 20px 24px;
+            }
+
+            nav a {
+                margin-left: 20px;
+                font-size: 13px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <div class="wrap">
-    <div class="masthead" aria-label="Masthead">
-      <div class="left">Press / Support / Privacy</div>
-      <div class="right">
-        <span class="chip">meatballs.app</span>
-        <span class="chip" id="mh-date">Updated —</span>
-        <span class="chip">Stockholm</span>
-      </div>
-    </div>
 
+    <!-- Header -->
     <header>
-      <h1>Meatballs</h1>
-
-      <div class="deck">
-        This is not a recipe app.<br/>
-        It is a reference library from kitchens around the world.
-      </div>
-
-      <div class="manifest">
-        An editorial iOS app about one of the world’s most familiar dishes —
-        <em>as culture, not content.</em>
-      </div>
-
-      <div class="contents" aria-label="Contents">
-        <a href="#what">What it is</a><span class="dot">·</span>
-        <a href="#for-journalists">For journalists</a><span class="dot">·</span>
-        <a href="#support">Support</a><span class="dot">·</span>
-        <a href="#privacy">Privacy</a>
-      </div>
+        <div class="logo">Meatballs</div>
+        <nav>
+            <a href="#story">Story</a>
+            <a href="#features">Features</a>
+            <a href="/press">Press</a>
+        </nav>
     </header>
 
-    <section class="quote-band" aria-label="Press quote">
-      <p class="quote">
-        A calm reference library where every dish reads like a small piece of place.
-      </p>
-      <div class="quote-meta">For quotes, screenshots, or context — <a href="mailto:press@meatballs.app">press@meatballs.app</a></div>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-eyebrow">The world's comfort food</p>
+            <h1 class="hero-headline">Your grandmother made them. So did mine. So did everyone's.</h1>
+            <p class="hero-subheadline">47 countries. One dish. A million memories.</p>
+            <a href="#" class="app-store-btn">
+                <!-- Replace with actual App Store badge -->
+                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+            </a>
+            <p style="margin-top: 16px; font-size: 13px; opacity: 0.5;">29 kr. Yours forever.</p>
+        </div>
+        <div class="hero-image">
+            <div class="phone-mockup">
+                [Phone with app screenshot]
+            </div>
+        </div>
     </section>
 
-    <main class="grid" aria-label="Main content">
-      <section class="prose" aria-label="Editorial description">
-        <span id="what" aria-hidden="true"></span>
-        <h2>What it is</h2>
-        <p>
-          Meatballs is built like a small magazine: each entry is a point of view — a dish tied to place,
-          tradition, and care. You can browse, read, and bookmark. The experience is designed to feel calm,
-          tactile, and precise.
-        </p>
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+        <span></span>
+    </div>
 
-        <div class="standalone" aria-label="Positioning lines">
-          <span>Not variations.</span>
-          <span>Not rankings.</span>
-          <span>Just tradition — by place.</span>
-          <small>Cook mode exists, but the editorial lens comes first.</small>
+    <!-- Story -->
+    <section class="story" id="story">
+        <div class="story-inner">
+            <p class="story-eyebrow">You already know this feeling</p>
+            <p class="story-quote">"The smell of my grandmother's kitchen. The sound of sizzling. The feeling of being exactly where you belong."</p>
+            <p class="story-text">
+                That memory lives somewhere in all of us. And here's the beautiful part: every culture has it. In Lebanon, it's kofta. In Italy, polpette. In Mexico, albondigas. Different kitchens, different spices. Same meaning. Comfort. Family. Home.
+            </p>
+            <p class="story-text" style="margin-top: 24px;">
+                This is 47 of those stories. One from each country. Not a collection of ingredients, but a journey through the kitchens of the world. Each one a window into how another family, somewhere else, makes someone feel at home.
+            </p>
         </div>
-
-        <span id="for-journalists" aria-hidden="true"></span>
-        <h2>For journalists</h2>
-        <p>
-          If you are writing about food culture, slow digital experiences, editorial product design, or
-          modern reference media, Meatballs is intended to be easy to assess quickly: what it is, what it
-          isn’t, and how it behaves.
-        </p>
-        <p>
-          If you need additional context (product rationale, credits, or a short quote), use the contact
-          details below and you will get a direct reply.
-        </p>
-      </section>
-
-      <aside aria-label="Facts and links">
-        <ul class="facts">
-          <li>
-            <b>Product</b>
-            <span>iOS app</span>
-          </li>
-          <li>
-            <b>Positioning</b>
-            <span>Reference library, editorial first</span>
-          </li>
-          <li>
-            <b>Website</b>
-            <span><a href="https://meatballs.app" rel="me">meatballs.app</a></span>
-          </li>
-          <li>
-            <b>Support</b>
-            <span><a href="mailto:support@meatballs.app">support@meatballs.app</a></span>
-          </li>
-          <li>
-            <b>Press</b>
-            <span><a href="mailto:press@meatballs.app">press@meatballs.app</a></span>
-          </li>
-        </ul>
-
-        <div class="specs" aria-label="Specs">
-          <h4>Specs</h4>
-          <dl>
-            <dt>Accounts</dt><dd>None</dd>
-            <dt>Tracking</dt><dd>None</dd>
-            <dt>Offline</dt><dd>Saved items</dd>
-            <dt>Sync</dt><dd>iCloud (bookmarks)</dd>
-            <dt>Security</dt><dd>HTTPS</dd>
-          </dl>
-        </div>
-
-        <p class="note" style="margin-top:16px">
-          Tip: If you only have one address, you can route both <span style="white-space:nowrap;">press@</span> and
-          <span style="white-space:nowrap;">support@</span> to the same inbox and keep the labels for clarity.
-        </p>
-      </aside>
-    </main>
-
-    <section class="section" id="support" aria-label="Support">
-      <h3>Support</h3>
-      <div class="simple">
-        <p>
-          For help, questions, or corrections: <a href="mailto:support@meatballs.app">support@meatballs.app</a>.
-          Include your device model and iOS version if you are reporting a bug.
-        </p>
-        <div class="links">
-          <a href="#privacy">Privacy</a>
-          <a href="https://meatballs.app">Home</a>
-        </div>
-      </div>
     </section>
 
-    <section class="section" id="privacy" aria-label="Privacy policy">
-      <h3>Privacy</h3>
-      <div class="simple">
-        <p>
-          Meatballs is designed to be respectful by default. The app does not sell personal data.
-        </p>
-        <p>
-          <strong>Data you create</strong> (such as bookmarks) may be stored on your device and/or synced via iCloud,
-          depending on how you use the app. Network requests, when needed, use HTTPS.
-        </p>
-        <p>
-          The app does not use advertising, third-party tracking, or analytics for behavioral profiling.
-        </p>
-        <div class="links">
-          <a href="mailto:privacy@meatballs.app">privacy@meatballs.app</a>
-          <a href="#support">Support</a>
+    <!-- Features -->
+    <section class="features" id="features">
+        <div class="features-header">
+            <p class="features-eyebrow">A cookbook, not an app</p>
+            <h2 class="features-title">What this actually is</h2>
         </div>
-      </div>
+        <div class="features-grid">
+            <div class="feature">
+                <div class="feature-icon">☶</div>
+                <h3 class="feature-title">47 stories. No more.</h3>
+                <p class="feature-text">No infinite scroll. No algorithm deciding what you want. One dish from each country, carefully chosen. Like a book with a beginning and an end.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">✍</div>
+                <h3 class="feature-title">The why, not just the how</h3>
+                <p class="feature-text">Where does it come from? How is it eaten? What does it mean to the people who grew up with it? Every dish has a story. We tell it.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">◔</div>
+                <h3 class="feature-title">Made to get messy</h3>
+                <p class="feature-text">Screen stays on while you cook. Current step on your lock screen. Large text for flour-covered hands. No ads. Just you and the food.</p>
+            </div>
+        </div>
     </section>
 
+    <!-- Countries -->
+    <section class="countries">
+        <div class="countries-inner">
+            <div class="countries-header">
+                <h2 class="countries-title">Same dish. Different kitchens.</h2>
+                <p class="countries-subtitle">A few of the 47</p>
+            </div>
+            <div class="countries-grid">
+                <div class="country-card">
+                    <div class="country-flag">🇮🇹</div>
+                    <p class="country-name">Italy</p>
+                    <p class="country-dish">Polpette</p>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag">🇸🇪</div>
+                    <p class="country-name">Sweden</p>
+                    <p class="country-dish">Köttbullar</p>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag">🇲🇽</div>
+                    <p class="country-name">Mexico</p>
+                    <p class="country-dish">Albondigas</p>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag">🇯🇵</div>
+                    <p class="country-name">Japan</p>
+                    <p class="country-dish">Tsukune</p>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag">🇱🇧</div>
+                    <p class="country-name">Lebanon</p>
+                    <p class="country-dish">Kofta</p>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag">🇮🇳</div>
+                    <p class="country-name">India</p>
+                    <p class="country-dish">Kofta Curry</p>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag">🇬🇷</div>
+                    <p class="country-name">Greece</p>
+                    <p class="country-dish">Keftedes</p>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag">🇻🇳</div>
+                    <p class="country-name">Vietnam</p>
+                    <p class="country-dish">Xíu Mại</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-      <div>© <span id="y"></span> Meatballs.</div>
-      <div>
-        <a href="#what">Contents</a> ·
-        <a href="#support">Support</a> ·
-        <a href="#privacy">Privacy</a>
-      </div>
-
-      <script>
-        const d = new Date();
-        document.getElementById('y').textContent = d.getFullYear();
-        const fmt = d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: '2-digit' });
-        document.getElementById('mh-date').textContent = 'Updated — ' + fmt;
-      </script>
+        <p class="footer-cta">Come home to 47 kitchens</p>
+        <a href="#" class="app-store-btn">
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+        </a>
+        <p style="margin-top: 16px; font-size: 14px; opacity: 0.5;">29 kr. No subscriptions. Yours forever.</p>
+        <div class="footer-links">
+            <a href="/press">Press</a>
+            <a href="/privacy">Privacy</a>
+            <a href="mailto:hello@meatballs.app">Contact</a>
+        </div>
     </footer>
-  </div>
-</body>
-</html>
+
+
+
+</body></html>
