@@ -3,8 +3,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meatballs – Press</title>
+    <title>Meatballs – 47 countries, 47 recipes, one universal dish</title>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         * {
@@ -17,7 +18,7 @@
             font-family: 'Libre Caslon Text', Georgia, serif;
             background-color: #1F1F1F;
             color: #F6EFE6;
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         /* Header */
@@ -56,255 +57,279 @@
             justify-content: space-between;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 48px 80px;
+            padding: 80px 48px 120px;
+            min-height: 80vh;
         }
 
         .hero-content {
             flex: 1;
-            max-width: 560px;
+            max-width: 500px;
         }
 
         .hero-eyebrow {
-            font-size: 12px;
+            font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 2px;
             opacity: 0.5;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .hero-headline {
-            font-size: 42px;
+            font-size: 48px;
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.15;
             margin-bottom: 24px;
         }
 
         .hero-subheadline {
-            font-size: 18px;
-            opacity: 0.8;
-            margin-bottom: 32px;
-            line-height: 1.7;
+            font-size: 20px;
+            opacity: 0.7;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .app-store-btn {
+            display: inline-block;
+        }
+
+        .app-store-btn img {
+            height: 52px;
         }
 
         .hero-image {
-            flex: 0 0 320px;
+            flex: 1;
             display: flex;
             justify-content: flex-end;
-            align-items: flex-start;
+            align-items: center;
         }
 
-        .app-icon {
-            width: 160px;
-            height: 160px;
-            background: linear-gradient(135deg, #E8DFD4 0%, #D4C9BC 100%);
-            border-radius: 36px;
+        .phone-mockup {
+            max-width: 380px;
+            width: 100%;
+            /* Placeholder - replace with actual image */
+            background: linear-gradient(135deg, #3a3836 0%, #2a2826 100%);
+            border-radius: 40px;
+            aspect-ratio: 9/18;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 13px;
-            opacity: 0.5;
+            color: #F6EFE6;
+            opacity: 0.4;
+            font-size: 14px;
         }
 
-        /* Quick Facts */
-        .facts {
+        /* Scroll indicator */
+        .scroll-indicator {
+            text-align: center;
+            padding-bottom: 60px;
+        }
+
+        .scroll-indicator span {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border-right: 2px solid #F6EFE6;
+            border-bottom: 2px solid #F6EFE6;
+            transform: rotate(45deg);
+            opacity: 0.3;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: rotate(45deg) translateY(0); }
+            50% { transform: rotate(45deg) translateY(8px); }
+        }
+
+        /* Screenshot carousel - 3 images, 4s each */
+        @keyframes fade1 {
+            0%, 25% { opacity: 1; }
+            33%, 92% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes fade2 {
+            0%, 25% { opacity: 0; }
+            33%, 58% { opacity: 1; }
+            66%, 100% { opacity: 0; }
+        }
+        @keyframes fade3 {
+            0%, 58% { opacity: 0; }
+            66%, 92% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* Story Section */
+        .story {
             background: #F6EFE6;
             color: #1F1F1F;
-            padding: 60px 48px;
+            padding: 120px 48px;
         }
 
-        .facts-inner {
-            max-width: 1200px;
+        .story-inner {
+            max-width: 800px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 32px;
-        }
-
-        .fact {
             text-align: center;
         }
 
-        .fact-number {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .fact-label {
-            font-size: 14px;
-            opacity: 0.6;
-        }
-
-        /* The Story */
-        .story {
-            padding: 100px 48px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .section-eyebrow {
+        .story-eyebrow {
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 2px;
             opacity: 0.5;
-            margin-bottom: 24px;
-        }
-
-        .section-title {
-            font-size: 32px;
-            font-weight: 700;
             margin-bottom: 32px;
         }
 
-        .story p {
-            font-size: 18px;
-            margin-bottom: 24px;
-            opacity: 0.85;
-        }
-
-        .story blockquote {
-            font-size: 24px;
+        .story-quote {
+            font-size: 32px;
             font-style: italic;
-            border-left: 3px solid #F6EFE6;
-            padding-left: 24px;
-            margin: 40px 0;
-            opacity: 0.9;
+            line-height: 1.5;
+            margin-bottom: 32px;
         }
 
-        /* What Makes It Different */
-        .difference {
-            background: #F6EFE6;
-            color: #1F1F1F;
-            padding: 100px 48px;
+        .story-text {
+            font-size: 18px;
+            opacity: 0.8;
+            line-height: 1.8;
         }
 
-        .difference-inner {
+        /* Features */
+        .features {
+            padding: 120px 48px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .difference-header {
-            max-width: 600px;
-            margin-bottom: 60px;
+        .features-header {
+            text-align: center;
+            margin-bottom: 80px;
         }
 
-        .difference-grid {
+        .features-eyebrow {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.5;
+            margin-bottom: 16px;
+        }
+
+        .features-title {
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 48px;
         }
 
-        .difference-item h3 {
+        .feature {
+            text-align: center;
+            padding: 32px;
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
             font-size: 18px;
             font-weight: 700;
             margin-bottom: 12px;
         }
 
-        .difference-item p {
-            font-size: 16px;
-            opacity: 0.75;
+        .feature-text {
+            font-size: 15px;
+            opacity: 0.7;
             line-height: 1.7;
         }
 
-        /* Assets */
-        .assets {
-            padding: 100px 48px;
+        /* Countries Preview */
+        .countries {
+            padding: 80px 48px 120px;
+            background: #F6EFE6;
+            color: #1F1F1F;
+        }
+
+        .countries-inner {
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .assets-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-            margin-top: 48px;
+        .countries-header {
+            text-align: center;
+            margin-bottom: 60px;
         }
 
-        .asset-card {
+        .countries-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .countries-subtitle {
+            font-size: 18px;
+            opacity: 0.6;
+            font-style: italic;
+        }
+
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .country-card {
             background: #EDE4D8;
             border-radius: 12px;
-            padding: 32px;
+            padding: 24px;
             text-align: center;
         }
 
-        .asset-card h3 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 8px;
+        .country-flag {
+            font-size: 32px;
+            margin-bottom: 12px;
         }
 
-        .asset-card p {
+        .country-name {
             font-size: 14px;
-            opacity: 0.6;
-            margin-bottom: 20px;
-        }
-
-        .asset-card a {
-            display: inline-block;
-            font-size: 14px;
-            color: #1F1F1F;
-            text-decoration: none;
-            border-bottom: 1px solid #1F1F1F;
-            padding-bottom: 2px;
-        }
-
-        .asset-card a:hover {
-            opacity: 0.6;
-        }
-
-        /* Contact */
-        .contact {
-            background: #F6EFE6;
-            color: #1F1F1F;
-            padding: 80px 48px;
-        }
-
-        .contact-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-        }
-
-        .contact h2 {
-            font-size: 28px;
             font-weight: 700;
-            margin-bottom: 24px;
+            margin-bottom: 4px;
         }
 
-        .contact p {
-            font-size: 16px;
-            opacity: 0.8;
-            margin-bottom: 16px;
-        }
-
-        .contact a {
-            color: #1F1F1F;
-        }
-
-        .contact-list {
-            list-style: none;
-            margin-top: 32px;
-        }
-
-        .contact-list li {
-            margin-bottom: 16px;
-            font-size: 15px;
-        }
-
-        .contact-list span {
-            opacity: 0.5;
-            display: inline-block;
-            width: 80px;
+        .country-dish {
+            font-size: 13px;
+            opacity: 0.6;
+            font-style: italic;
         }
 
         /* Footer */
         footer {
-            padding: 40px 48px;
+            padding: 60px 48px;
             text-align: center;
-            font-size: 14px;
+            border-top: 1px solid rgba(246, 239, 230, 0.15);
+        }
+
+        .footer-cta {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
+            margin-top: 40px;
+        }
+
+        .footer-links a {
+            color: #F6EFE6;
             opacity: 0.5;
+            text-decoration: none;
+            margin: 0 16px;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
         }
 
         /* Responsive */
@@ -312,132 +337,114 @@
             .hero {
                 flex-direction: column;
                 text-align: center;
-                padding: 40px 24px 40px;
+                padding: 40px 24px 60px;
+                min-height: auto;
             }
 
             .hero-content {
                 max-width: 100%;
-                margin-bottom: 32px;
+                margin-bottom: 40px;
             }
 
             .hero-headline {
                 font-size: 28px;
+                line-height: 1.25;
             }
 
             .hero-subheadline {
-                font-size: 16px;
+                font-size: 18px;
             }
 
             .hero-image {
                 justify-content: center;
-                flex: 0 0 auto;
             }
 
-            .facts-inner {
+            .screenshot-carousel {
+                max-width: 260px !important;
+            }
+
+            .scroll-indicator {
+                padding-bottom: 40px;
+            }
+
+            .story {
+                padding: 60px 24px;
+            }
+
+            .story-quote {
+                font-size: 24px;
+            }
+
+            .story-text {
+                font-size: 16px;
+            }
+
+            .features {
+                padding: 60px 24px;
+            }
+
+            .features-header {
+                margin-bottom: 48px;
+            }
+
+            .features-title {
+                font-size: 28px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .feature {
+                padding: 24px 0;
+            }
+
+            .countries {
+                padding: 60px 24px;
+            }
+
+            .countries-title {
+                font-size: 28px;
+            }
+
+            .countries-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
+                gap: 16px;
             }
 
-            .fact-number {
-                font-size: 32px;
+            .country-card {
+                padding: 20px 16px;
             }
 
-            .difference-grid {
-                grid-template-columns: 1fr;
+            footer {
+                padding: 48px 24px;
             }
 
-            .assets-grid {
-                grid-template-columns: 1fr;
+            .footer-cta {
+                font-size: 20px;
             }
 
-            .contact-inner {
-                grid-template-columns: 1fr;
-                gap: 48px;
+            .footer-links a {
+                margin: 0 12px;
+                font-size: 13px;
             }
 
             header {
                 padding: 20px 24px;
+                align-items: flex-start;
             }
 
-            .story, .assets {
-                padding: 60px 24px;
+            nav {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 8px;
             }
 
-            .story-grid {
-                grid-template-columns: 1fr !important;
-                gap: 40px !important;
-            }
-
-            .screenshots-grid {
-                grid-template-columns: 1fr !important;
-                max-width: 280px;
-                margin: 0 auto;
-            }
-
-            .angles-grid {
-                grid-template-columns: 1fr !important;
-            }
-
-            .section-title {
-                font-size: 24px;
-            }
-
-            /* Fix inline padding sections */
-            .copy-paste-section,
-            .story-section,
-            .screenshots-section,
-            .angles-section,
-            .quotes-section {
-                padding-left: 24px !important;
-                padding-right: 24px !important;
-            }
-
-            .story-section {
-                padding-top: 60px !important;
-                padding-bottom: 60px !important;
-            }
-
-            .story-section .section-title {
-                font-size: 24px;
-            }
-
-            .story-section blockquote {
-                font-size: 18px !important;
-            }
-
-            .difference {
-                padding: 60px 24px !important;
-            }
-
-            .screenshots-section {
-                padding-top: 60px !important;
-                padding-bottom: 60px !important;
-            }
-
-            .angles-section {
-                padding-top: 60px !important;
-                padding-bottom: 60px !important;
-            }
-
-            .quotes-section {
-                padding-top: 40px !important;
-                padding-bottom: 60px !important;
-            }
-
-            .quotes-section blockquote {
-                font-size: 16px !important;
-            }
-
-            .contact {
-                padding: 60px 24px !important;
-            }
-
-            .assets {
-                padding: 60px 24px !important;
-            }
-
-            footer {
-                padding: 32px 24px;
+            nav a {
+                margin-left: 0;
+                font-size: 13px;
             }
         }
     </style>
@@ -448,209 +455,143 @@
     <header>
         <div class="logo">Meatballs</div>
         <nav>
-            <a href="/">Home</a>
-            <a href="/press" style="opacity: 1;">Press</a>
+            <a href="#story">Story</a>
+            <a href="#features">Features</a>
+            <a href="/press">Press</a>
         </nav>
     </header>
 
     <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
-            <p class="hero-eyebrow">Press Kit</p>
-            <h1 class="hero-headline">The world's comfort food, in one app</h1>
-            <p class="hero-subheadline">
-                Meatballs is a book that happens to be an app, exploring one dish across 47 countries. 47 recipes, each with its cultural story. Built in Stockholm by one person who started with his grandmother's recipe.
-            </p>
-            <!-- Quick facts inline -->
-            <p style="font-size: 14px; opacity: 0.6; margin-top: 24px; line-height: 1.8;">
-                47 countries · 47 recipes · 29 kr one-time · No subscriptions · No ads · No tracking
-            </p>
+            <p class="hero-eyebrow">The world's comfort food</p>
+            <h1 class="hero-headline">Your grandmother made them. So did mine. So did everyone's.</h1>
+            <p class="hero-subheadline">47 countries. One dish. A million memories.</p>
+            <a href="#" class="app-store-btn">
+                <!-- Replace with actual App Store badge -->
+                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+            </a>
+            <p style="margin-top: 16px; font-size: 13px; opacity: 0.5;">29 kr. Yours forever.</p>
         </div>
         <div class="hero-image">
-            <img src="/assets/app-icon.png" alt="Meatballs app icon" style="width: 160px; height: 160px; border-radius: 36px;">
-        </div>
-    </section>
-
-    <!-- Copy-paste summary -->
-    <section class="copy-paste-section" style="padding: 20px 48px 0;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <details style="background: rgba(246,239,230,0.1); border: 1px solid rgba(246,239,230,0.2); border-radius: 8px; padding: 20px 24px;">
-                <summary style="cursor: pointer; font-size: 14px; font-weight: 700; opacity: 0.7;">Copy-paste summary for articles</summary>
-                <p style="font-size: 15px; line-height: 1.8; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(246,239,230,0.2);">
-                    <strong>Meatballs</strong> is an iOS app with 47 meatball recipes from 47 countries -each with cultural context and history. Created by a Swedish developer inspired by his grandmother's köttbullar. One-time purchase (29 kr / $2.99), no subscriptions, no ads, no tracking. Available on the App Store.
-                </p>
-            </details>
-        </div>
-    </section>
-
-    <!-- The Story -->
-    <section class="story-section" style="background: #F6EFE6; color: #1F1F1F; padding: 100px 48px;">
-        <div class="story-grid" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
-            <div>
-                <p class="section-eyebrow" style="color: #1F1F1F;">The Story</p>
-                <h2 class="section-title" style="color: #1F1F1F;">It started with a grandmother's kitchen</h2>
-
-                <p style="font-size: 17px; margin-bottom: 24px; opacity: 0.85; line-height: 1.8;">
-                    The smell of sizzling meat. The sound of a pan. The feeling of being exactly where you belong. That's where Meatballs started -with a memory of my grandmother's Swedish köttbullar.
-                </p>
-
-                <p style="font-size: 17px; opacity: 0.85; line-height: 1.8;">
-                    Then I discovered something: every culture has this dish. Kofta in Lebanon. Polpette in Italy. Albondigas in Mexico. Tsukune in Japan. Different spices, different techniques -but the same meaning everywhere. Comfort. Family. Home.
-                </p>
-            </div>
-            <div style="padding-top: 48px;">
-                <blockquote style="font-size: 22px; font-style: italic; border-left: 3px solid #1F1F1F; padding-left: 24px; margin-bottom: 40px; opacity: 0.9; line-height: 1.6;">
-                    "Food apps have become content factories. I wanted the opposite -a book that happens to be an app. Where the notes matter. Where the history matters."
-                </blockquote>
-
-                <p style="font-size: 17px; opacity: 0.85; line-height: 1.8;">
-                    Meatballs documents this universal dish across 47 countries. Each recipe is researched, contextualized, and presented with the story of where it comes from and what it means to the people who grew up with it.
-                </p>
+            <div class="screenshot-carousel" style="position: relative; max-width: 320px; width: 100%;">
+                <img src="/assets/Screen1.png" alt="Meatballs app" class="carousel-img" style="width: 100%; border-radius: 32px; animation: fade1 12s infinite;">
+                <img src="/assets/Screen2.png" alt="Meatballs app" class="carousel-img" style="position: absolute; top: 0; left: 0; width: 100%; border-radius: 32px; animation: fade2 12s infinite;">
+                <img src="/assets/Screen3.png" alt="Meatballs app" class="carousel-img" style="position: absolute; top: 0; left: 0; width: 100%; border-radius: 32px; animation: fade3 12s infinite;">
             </div>
         </div>
     </section>
 
-    <!-- What Makes It Different -->
-    <section class="difference">
-        <div class="difference-inner">
-            <div class="difference-header">
-                <p class="section-eyebrow">What makes it different</p>
-                <h2 class="section-title">The constraint is the point</h2>
-            </div>
-            <div class="difference-grid">
-                <div class="difference-item">
-                    <h3>Editorial, not algorithmic</h3>
-                    <p>47 recipes, hand-selected. No user-generated content, no infinite scroll, no recommendations. Like a cookbook with a clear point of view.</p>
-                </div>
-                <div class="difference-item">
-                    <h3>Cultural context, not just ingredients</h3>
-                    <p>Every recipe includes the story -where the dish comes from, how it's traditionally served, what it means in that culture. Food as anthropology.</p>
-                </div>
-                <div class="difference-item">
-                    <h3>Buy once, own forever</h3>
-                    <p>29 kr ($2.99). No subscription, no in-app purchases, no ads. The business model is selling the app, not the user's attention.</p>
-                </div>
-                <div class="difference-item">
-                    <h3>Built to cook from</h3>
-                    <p>Cook Mode keeps the screen awake. Live Activity shows your current step on the lock screen. Designed for flour-covered hands, not just browsing.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+        <span></span>
+    </div>
 
-    <!-- Screenshots Preview -->
-    <section class="screenshots-section" style="padding: 80px 48px;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <p class="section-eyebrow">The App</p>
-            <h2 class="section-title">A quick look inside</h2>
-
-            <div class="screenshots-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px;">
-                <img src="/assets/Screen1.png" alt="Meatballs app - Recipe list" style="width: 100%; border-radius: 24px;">
-                <img src="/assets/Screen2.png" alt="Meatballs app - Recipe detail" style="width: 100%; border-radius: 24px;">
-                <img src="/assets/Screen3.png" alt="Meatballs app - Cook mode" style="width: 100%; border-radius: 24px;">
-            </div>
-            <p style="text-align: center; margin-top: 24px; font-size: 14px; opacity: 0.5;">
-                High-resolution versions available in <a href="/press/screenshots.zip" style="color: #F6EFE6;">Press Assets</a>
+    <!-- Story -->
+    <section class="story" id="story">
+        <div class="story-inner">
+            <p class="story-eyebrow">You already know this feeling</p>
+            <p class="story-quote">"The smell of my grandmother's kitchen. The sound of sizzling. The feeling of being exactly where you belong."</p>
+            <p class="story-text">
+                That memory lives somewhere in all of us. And here's the beautiful part: every culture has it. In Lebanon, it's kofta. In Italy, polpette. In Mexico, albondigas. Different kitchens, different spices. Same meaning. Comfort. Family. Home.
+            </p>
+            <p class="story-text" style="margin-top: 24px;">
+                This is 47 of those stories. One from each country. Not a collection of ingredients, but a journey through the kitchens of the world. Each one a window into how another family, somewhere else, makes someone feel at home.
             </p>
         </div>
     </section>
 
-    <!-- Story Angles -->
-    <section class="angles-section" style="padding: 80px 48px; max-width: 1200px; margin: 0 auto;">
-        <p class="section-eyebrow">Story angles</p>
-        <h2 class="section-title">Ways to write about this</h2>
-
-        <div class="angles-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 48px;">
-            <div style="background: rgba(246,239,230,0.08); border: 1px solid rgba(246,239,230,0.15); padding: 28px; border-radius: 12px;">
-                <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 12px;">The nostalgia angle</h3>
-                <p style="font-size: 15px; opacity: 0.75; line-height: 1.6;">A Swedish developer builds an app based on memories of his grandmother's kitchen -and discovers the whole world shares the same comfort food.</p>
+    <!-- Features -->
+    <section class="features" id="features">
+        <div class="features-header">
+            <p class="features-eyebrow">A cookbook, not an app</p>
+            <h2 class="features-title">What this actually is</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature">
+                <div class="feature-icon">☶</div>
+                <h3 class="feature-title">47 stories. No more.</h3>
+                <p class="feature-text">No infinite scroll. No algorithm deciding what you want. One dish from each country, carefully chosen. Like a book with a beginning and an end.</p>
             </div>
-            <div style="background: rgba(246,239,230,0.08); border: 1px solid rgba(246,239,230,0.15); padding: 28px; border-radius: 12px;">
-                <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 12px;">The anti-subscription angle</h3>
-                <p style="font-size: 15px; opacity: 0.75; line-height: 1.6;">In an era of subscription fatigue, one indie app bets on the old model: pay once, own forever. No ads, no tracking, no recurring charges.</p>
+            <div class="feature">
+                <div class="feature-icon">✍</div>
+                <h3 class="feature-title">The why, not just the how</h3>
+                <p class="feature-text">Where does it come from? How is it eaten? What does it mean to the people who grew up with it? Every dish has a story. We tell it.</p>
             </div>
-            <div style="background: rgba(246,239,230,0.08); border: 1px solid rgba(246,239,230,0.15); padding: 28px; border-radius: 12px;">
-                <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 12px;">The constraint angle</h3>
-                <p style="font-size: 15px; opacity: 0.75; line-height: 1.6;">While competitors race to add more recipes, this app does the opposite: just 47 recipes, one per country. The limitation is the point.</p>
-            </div>
-            <div style="background: rgba(246,239,230,0.08); border: 1px solid rgba(246,239,230,0.15); padding: 28px; border-radius: 12px;">
-                <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 12px;">The food-as-culture angle</h3>
-                <p style="font-size: 15px; opacity: 0.75; line-height: 1.6;">How one humble dish -ground meat rolled into balls -became comfort food on every continent. An anthropological journey through the kitchen.</p>
+            <div class="feature">
+                <div class="feature-icon">◔</div>
+                <h3 class="feature-title">Made to get messy</h3>
+                <p class="feature-text">Screen stays on while you cook. Current step on your lock screen. Large text for flour-covered hands. No ads. Just you and the food.</p>
             </div>
         </div>
     </section>
 
-    <!-- Quotes -->
-    <section class="quotes-section" style="padding: 60px 48px 100px; max-width: 800px; margin: 0 auto;">
-        <p class="section-eyebrow">Ready-to-use quotes</p>
-        <h2 class="section-title">From the developer</h2>
-
-        <div style="margin-top: 40px;">
-            <blockquote style="font-size: 18px; font-style: italic; border-left: 3px solid #F6EFE6; padding-left: 24px; margin-bottom: 32px; opacity: 0.85;">
-                "It started in my grandmother's kitchen. That smell, that feeling -I realized every culture has that. Kofta, polpette, albondigas. Different names, same meaning: home."
-            </blockquote>
-            <blockquote style="font-size: 18px; font-style: italic; border-left: 3px solid #F6EFE6; padding-left: 24px; margin-bottom: 32px; opacity: 0.85;">
-                "Food apps have become content factories. I wanted the opposite -a book that happens to be an app. Where quality beats quantity."
-            </blockquote>
-            <blockquote style="font-size: 18px; font-style: italic; border-left: 3px solid #F6EFE6; padding-left: 24px; opacity: 0.85;">
-                "47 countries, 47 recipes. That's it. The constraint is the whole point. It forces you to be thoughtful about what you include."
-            </blockquote>
-        </div>
-    </section>
-
-    <!-- Assets -->
-    <section class="assets" style="padding: 100px 48px;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <p class="section-eyebrow">Press Assets</p>
-            <h2 class="section-title">Everything you need</h2>
-
-            <div class="assets-grid">
-                <div class="asset-card" style="background: rgba(246,239,230,0.08); border: 1px solid rgba(246,239,230,0.15); color: #F6EFE6;">
-                    <h3>Press Kit</h3>
-                    <p>App icon, screenshots, and logos in various formats</p>
-                    <a href="/press/meatballs-presskit.zip" style="color: #F6EFE6; border-bottom-color: #F6EFE6;">Download ZIP</a>
-                </div>
-                <div class="asset-card" style="background: rgba(246,239,230,0.08); border: 1px solid rgba(246,239,230,0.15); color: #F6EFE6;">
-                    <h3>App Icon</h3>
-                    <p>1024×1024 PNG, with and without rounded corners</p>
-                    <a href="/press/app-icon.png" style="color: #F6EFE6; border-bottom-color: #F6EFE6;">Download PNG</a>
-                </div>
-                <div class="asset-card" style="background: rgba(246,239,230,0.08); border: 1px solid rgba(246,239,230,0.15); color: #F6EFE6;">
-                    <h3>Screenshots</h3>
-                    <p>iPhone 15 Pro, showing key features</p>
-                    <a href="/press/screenshots.zip" style="color: #F6EFE6; border-bottom-color: #F6EFE6;">Download ZIP</a>
-                </div>
+    <!-- Countries -->
+    <section class="countries">
+        <div class="countries-inner">
+            <div class="countries-header">
+                <h2 class="countries-title">Same dish. Different kitchens.</h2>
+                <p class="countries-subtitle">A few of the 47</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="contact">
-        <div class="contact-inner">
-            <div>
-                <h2>Writing about Meatballs?</h2>
-                <p>
-                    I'm happy to help with interviews, additional materials, or any questions. Response time is usually within 24 hours.
-                </p>
-                <p>
-                    For review copies or promo codes, email <a href="mailto:press@meatballs.app">press@meatballs.app</a>
-                </p>
-            </div>
-            <div>
-                <h2>Contact</h2>
-                <ul class="contact-list">
-                    <li><span>Press</span> <a href="mailto:press@meatballs.app">press@meatballs.app</a></li>
-                    <li><span>Support</span> <a href="mailto:support@meatballs.app">support@meatballs.app</a></li>
-                    <li><span>General</span> <a href="mailto:hello@meatballs.app">hello@meatballs.app</a></li>
-                </ul>
+            <div class="countries-grid">
+                <div class="country-card">
+                    <div class="country-flag">🇮🇹</div>
+                    <p class="country-name">Italy</p>
+                    <p class="country-dish">Polpette</p>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag">🇸🇪</div>
+                    <p class="country-name">Sweden</p>
+                    <p class="country-dish">Köttbullar</p>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag">🇲🇽</div>
+                    <p class="country-name">Mexico</p>
+                    <p class="country-dish">Albondigas</p>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag">🇯🇵</div>
+                    <p class="country-name">Japan</p>
+                    <p class="country-dish">Tsukune</p>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag">🇱🇧</div>
+                    <p class="country-name">Lebanon</p>
+                    <p class="country-dish">Kofta</p>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag">🇮🇳</div>
+                    <p class="country-name">India</p>
+                    <p class="country-dish">Kofta Curry</p>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag">🇬🇷</div>
+                    <p class="country-name">Greece</p>
+                    <p class="country-dish">Keftedes</p>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag">🇻🇳</div>
+                    <p class="country-name">Vietnam</p>
+                    <p class="country-dish">Xíu Mại</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        © Meatballs. Made in Stockholm.
+        <p class="footer-cta">Come home to 47 kitchens</p>
+        <a href="#" class="app-store-btn">
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+        </a>
+        <p style="margin-top: 16px; font-size: 14px; opacity: 0.5;">29 kr. No subscriptions. Yours forever.</p>
+        <div class="footer-links">
+            <a href="/press">Press</a>
+            <a href="/support">Support</a>
+            <a href="/privacy">Privacy</a>
+        </div>
     </footer>
 
-</body>
-</html>
+
+
+</body></html>
